@@ -52,15 +52,15 @@ export default {
                         //获取token
                         const token = res.data.data.data.token;
                         //吧token存储到本地
-                        localStorage.setItem("yy_token",token);
+                        localStorage.setItem("token",token);
                         //获取用户信息
                         loginApi.getUserInfo().then(res=>{
                              const resp = res.data.data;
                             if(resp.code == 200){
                                 //将获取到的用户信息保存到本地
-                                localStorage.setItem("jy_info",JSON.stringify(resp.data));
+                                localStorage.setItem("info",JSON.stringify(resp.data));
                                 //跳转到首页
-                                this.$router.push({path : "/about"})
+                                this.$router.push({path : "/"})
                             }else{
                                 this.$message({
                                     message: '登录失败',
