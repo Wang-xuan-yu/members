@@ -28,6 +28,10 @@
         <i class="el-icon-user"></i>
         <span slot="title">员工管理</span>
       </el-menu-item>
+      <el-menu-item index="/user">
+        <i class="el-icon-user"></i>
+        <span slot="title">用户列表</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>

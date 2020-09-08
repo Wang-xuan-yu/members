@@ -69,6 +69,14 @@ const routes = [
           title: "员工功能"
         },
         component: () => import(/* webpackChunkName: "about" */ '@/views/staff/index.vue'),
+      },
+      {
+        path: "/user",
+        name: "user",
+        meta: {
+          title: "用户列表"
+        },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/user/index.vue'),
       }
     ]
   },

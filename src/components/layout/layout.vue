@@ -41,7 +41,7 @@ export default {
   background-color: #2d3a4b;
 }
 .navBar{
-  width: 240px;
+  width: 180px;
   position: absolute;
   left: 0;
   top: 50px;
@@ -50,7 +50,7 @@ export default {
 }
 .main{
   position: absolute;
-  left: 240px;
+  left: 180px;
   right: 0;
   top: 50px;
   bottom: 0;
