@@ -4,6 +4,8 @@ import axios from "axios";
 
 import { Loading } from 'element-ui';
 
+import router from "../router/index"
+
 //封装loading加载
 const loading = {
   loadingInstance : null,
@@ -25,15 +27,6 @@ const loading = {
 } 
 
 
-// axios.get("http://localhost:8888/db.json").then(res=>{
-//     console.log(res)
-// })
-
-// axios.get("/db.json").then(res=>{
-//     console.log(res)
-// })
-
-
 //创建axios实例,在axios实例里面可以自定义一些请求的选项
 const request = axios.create({
     //设置公共路径
@@ -48,9 +41,12 @@ request.interceptors.request.use(function (config) {
     //进行loading加载
     loading.open();
 
-    const token = localStorage.getItem("yy_token") ? localStorage.getItem("yy_token") : "";
+    const token = localStorage.getItem("token") ? localStorage.getItem("token") : "";
+
     //发送token
-    config.headers.Authorization = token;
+    config.headers.Authorization ="Bearer " + token;
+
+
     console.log("请求拦截")
     // 在发送请求之前做些什么
     return config;
@@ -66,6 +62,11 @@ request.interceptors.request.use(function (config) {
 request.interceptors.response.use(function (response) {
     //关闭loading加载
     loading.close();
+    if(response.data.code == "202"){
+      localStorage.removeItem("token");ss
+      localStorage.removeItem("info");
+      router.push({path : "/login"})
+    }
 
     console.log("响应拦截")
     // 对响应数据做点什么
@@ -78,10 +79,6 @@ request.interceptors.response.use(function (response) {
     return Promise.reject(error);
   });
 
-
-// request.get("/db.json").then(res=>{
-//     console.log(res)
-// })
 
 //导出axios实例对象
 export default request;

@@ -9,10 +9,11 @@ export default {
         })
     },
     //获取会员列表分页接口
-    getMemberListPage(page,size){
+    getMemberListPage(page,size,searchMap){
         return request({
             url : `/member/list/search/${page}/${size}`,
-            method : "get"
+            method : "POST",
+            data : searchMap
         })
     }
 }   
